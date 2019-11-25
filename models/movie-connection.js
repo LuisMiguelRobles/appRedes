@@ -18,7 +18,8 @@ MovieModel = mongoose.model("Movie", MovieSchema)
 
 mongoose.connect(conf.mongo.host, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });	
 	
 
