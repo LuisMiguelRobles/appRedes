@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+	section.container
+		h1.header= title
+		article.item
+			
+			form.form(method="post", action="/actualizar/" + data._id)
+			
+				fieldset
+					
+					div
+						input(type="text", name="title", placeholder="title", value=data.title, required)
+					div
+						input(type="text", name="release_year", placeholder="release year", value=data.release_year, required)
+					div
+						input(type="text", name="rating", placeholder="rating", value=data.rating, required)
+					div
+						input.button.edit(type="submit", value="Editar")
+		a.button.show(href="/") Inicio

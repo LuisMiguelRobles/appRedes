@@ -1,0 +1,17 @@
+extends layout
+block content
+	section.container
+		h1.header= title
+		article.item
+			form.form(method="post", action="/")
+				fieldset
+					div
+						input(type="text", name="title", placeholder="title", required)
+					div
+						input(type="text", name="release_year", placeholder="release year", required)
+					div
+						input(type="text", name="rating", placeholder="rating", required)
+					
+					div
+						input.button.add(type="submit", value="Agregar")
+		a.button.show(href="/") Inicio

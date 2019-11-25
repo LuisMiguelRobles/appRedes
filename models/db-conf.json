@@ -1,0 +1,6 @@
+{
+	"mongo" : {
+		"host" : "mongodb+srv://luis:Ingeniero2022@cluster0-7s6dv.azure.mongodb.net/test?retryWrites=true&w=majority",
+		"db" : "sample_mflix"
+	}
+}
