@@ -17,7 +17,8 @@ MovieSchema = new Schema({
 MovieModel = mongoose.model("Movie", MovieSchema)
 
 mongoose.connect(conf.mongo.host, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 });	
 	
 

@@ -21,7 +21,6 @@ MovieController.getOne = (req, res, next) => {
 			title : 'Editar Película',
 			data : docs
 		}
-		console.log(locals)
 		res.render('edit-movie', locals)
 	})
 }
@@ -35,9 +34,20 @@ MovieController.save = (req, res, next) => {
 		rating : req.body.rating,
 		image : req.body.image
 	}
-	console.log(movie)
+	
 	MovieModel.save( movie, () => res.redirect('/') )
 	
+}
+
+MovieController.update =(req, res, next) =>{
+	let movie_id = req.params.movie_id
+	let movie = {
+		_id : movie_id,
+		title : req.body.title,
+		release_year : req.body.release_year,
+		rating : req.body.rating,
+	}
+	MovieModel.update(movie, () => res.redirect('/'));
 }
 
 MovieController.delete = (req, res, next) => {

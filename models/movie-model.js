@@ -14,7 +14,7 @@ MovieModel.getAll = (cb) => {
 
 MovieModel.getOne = (id, cb) => {
 	conn
-		.findOne({movie_id : id})
+		.findOne({_id : id})
 		.exec((err, docs) => {
 			if(err) throw err
 			cb(docs)
@@ -22,40 +22,33 @@ MovieModel.getOne = (id, cb) => {
 }
 
 MovieModel.save = (data, cb) => {
-	conn
-		.count({_id : data.movie_id})
-		.exec((err, count) => {
-			if(err) throw err
-			console.log(`Número de Docs: ${count}`)
+	
+	conn.create(data, (err) => {
+		if(err) throw err
+			cb()
+	})
+			
+		
+}
 
-			if(count == 0)
-			{
-				conn.create(data, (err) => {
-					if(err) throw err
-					cb()
-				})
-			}
-			else if(count == 1)
-			{
-				conn.findOneAndUpdate(
-					{movie_id : data.movie_id},
-					{
-						title : data.title,
-						release_year : data.release_year,
-						rating : data.rating,
-						image : data.image
-					},
-					(err) => {
-						if(err) throw(err)
-						cb()
-					}
-				)
-			}
-		})
+MovieModel.update = (data, cb)=>{
+	console.log("data", data)
+	conn.findOneAndUpdate(
+		{_id : data._id},
+		{
+			title : data.title,
+			release_year : data.release_year,
+			rating : data.rating,
+			image : data.image
+		},
+		(err) => {
+			if(err) throw(err)
+			cb()
+		}
+	)
 }
 
 MovieModel.delete = (id, cb) => {
-	console.log("_id", id)
 	conn.remove({_id : id}, (err, docs) => {
 		if(err) throw err
 		cb()

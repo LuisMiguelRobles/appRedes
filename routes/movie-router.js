@@ -9,7 +9,7 @@ router
 	.get('/agregar', MovieController.addForm)
 	.post('/', MovieController.save)
 	.get('/editar/:movie_id', MovieController.getOne)
-	.post('/actualizar/:movie_id', MovieController.save)
+	.post('/actualizar/:movie_id', MovieController.update)
 	.post('/eliminar/:movie_id', MovieController.delete)
 	.use(MovieController.error404)
 	
